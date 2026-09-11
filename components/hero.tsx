@@ -1,55 +1,25 @@
 "use client";
-
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
-import HeroPlane from "./hero-plane";
-
+import Image from "next/image";
+import { ArrowDown, ArrowUpRight, RotateCcw } from "lucide-react";
+import Intro from "./intro";
 export default function Hero() {
-  return (
-    <section className="hero hero-v2">
-      <div className="hero-kicker">
-        <span className="eyebrow">Independent creative studio</span>
-        <span className="hero-coordinate" aria-hidden="true">
-          ↗ THINK BIG. GO FURTHER.
-        </span>
+  return <section className="hero editorial-hero">
+    <Intro />
+    <div className="editorial-top eyebrow"><span><i /> Independent minds. Unforgettable brands.</span><button onClick={() => window.dispatchEvent(new Event("replay-intro"))}><RotateCcw size={13} /> Replay intro</button></div>
+    <div className="editorial-grid">
+      <div className="editorial-copy">
+        <h1><span>Made to</span><span>stand <em>out.</em></span></h1>
+        <p>Big ideas deserve more than a scroll past.<br />We build brands, content, and campaigns<br /> that make people stop. And feel something.</p>
+        <div className="editorial-actions"><Link href="/brands" className="hero-work">Explore our work <ArrowUpRight size={22} /></Link><Link href="/contact">Let’s make something <ArrowUpRight size={17} /></Link></div>
       </div>
-      <div className="hero-composition">
-        <h1>
-          <span className="headline-line">Big ideas.</span>
-          <span className="headline-line accent-line">Bigger</span>
-          <span className="headline-line">
-            impact<span className="period">.</span>
-          </span>
-        </h1>
-        <HeroPlane />
-      </div>
-      <div className="hero-baseline">
-        <div className="hero-description">
-          <span className="eyebrow">Social. Brand. Creative.</span>
-          <p>
-            We turn ambitious brands
-            <br />
-            into impossible-to-ignore ones.
-          </p>
-        </div>
-        <div className="hero-baseline-links">
-          <Link href="/brands" className="round-link">
-            <span>
-              Explore
-              <br />
-              our work
-            </span>
-            <ArrowUpRight size={25} />
-          </Link>
-          <Link className="quiet-link" href="/contact">
-            Let’s talk <ArrowUpRight size={16} />
-          </Link>
-        </div>
-        <a className="scroll-link" href="#studio">
-          <ArrowDown size={18} />
-          <span className="eyebrow">Keep exploring</span>
-        </a>
-      </div>
-    </section>
-  );
+      <Link href="/case-studies/orra" className="hero-art-stack" aria-label="Explore ORRA concept project">
+        <div className="art-back art-back-one"><Image src="/images/forma.webp" alt="" fill sizes="40vw" /></div>
+        <div className="art-back art-back-two"><Image src="/images/daybreak.webp" alt="" fill sizes="40vw" /></div>
+        <div className="art-front"><Image src="/images/orra.webp" alt="ORRA skincare campaign in cobalt blue and sunshine yellow" fill priority sizes="(max-width: 700px) 80vw, 38vw" /><span className="art-sticker">A little bold.<br /><strong>A lot different.</strong><ArrowUpRight size={24} /></span></div>
+        <span className="art-caption eyebrow">ORRA / Brand world / Concept project <ArrowUpRight size={17} /></span>
+      </Link>
+    </div>
+    <div className="editorial-bottom"><a href="#studio"><ArrowDown size={16} /> Scroll to discover</a><span>STRATEGY + DESIGN + CONTENT + CULTURE</span><span className="eyebrow">Ideas take flight ↗</span></div>
+  </section>;
 }
