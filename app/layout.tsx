@@ -18,7 +18,7 @@ const mono = IBM_Plex_Mono({
 });
 export const metadata: Metadata = {
   metadataBase: new URL(
-    "https://magnifly-media-studio.polite-hill-2471.chatgpt.site",
+    "https://magnifly-media-studio.magniflydesign.chatgpt.site",
   ),
   openGraph: {
     title: "MAGNIFLY MEDIA — Big ideas. Bigger impact.",
