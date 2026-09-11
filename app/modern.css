@@ -1,4 +1,5 @@
 /* MAGNIFLY's wide editorial typography and interactive flight system. */
+@media(max-width:700px){.next-project h2{font-size:12vw!important;gap:12px;letter-spacing:-.06em}.next-project h2 span{flex-shrink:0}}
 .outline {
   outline: 0;
 }
