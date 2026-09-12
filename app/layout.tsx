@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navigation from "@/components/navigation";
 import Motion from "@/components/motion";
+import PageFlight from "@/components/page-flight";
 import "./globals.css";
 import "./modern.css";
 import "./hero.css";
@@ -87,6 +88,7 @@ export default function RootLayout({
           <Link href="/contact">Start a conversation ↗</Link>
         </footer>
         <Motion />
+        <PageFlight />
       </body>
     </html>
   );
