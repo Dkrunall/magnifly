@@ -1,0 +1,21 @@
+html{scroll-behavior:auto}
+html.lenis{scroll-behavior:auto}
+.flight-route{opacity:.5;overflow:visible}
+.flight-route path{stroke-linecap:round}
+.plane-flight{transform-origin:50% 50%;will-change:transform}
+.flight-cta a,.button,.nav-cta{isolation:isolate;position:relative;overflow:hidden;transition:color .3s,box-shadow .3s}
+.flight-cta a:first-child::before,.button::before,.nav-cta::before{content:"";position:absolute;inset:-2px;z-index:-1;background:#f5f3ee;transform:translateY(105%);border-radius:50% 50% 0 0;transition:transform .45s cubic-bezier(.2,.7,.2,1),border-radius .45s}
+.flight-cta a:first-child:hover::before,.flight-cta a:first-child:focus-visible::before,.button:hover::before,.button:focus-visible::before,.nav-cta:hover::before,.nav-cta:focus-visible::before{transform:translateY(0);border-radius:0}
+.button:hover,.button:focus-visible,.nav-cta:hover,.nav-cta:focus-visible{color:#090909}
+.flight-cta svg,.button span{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.flight-cta a:hover svg,.flight-cta a:focus-visible svg,.button:hover span{transform:translate(3px,-3px) rotate(6deg)}
+.text-link{position:relative;border-bottom-color:transparent}
+.text-link::after{content:"";position:absolute;bottom:0;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(.3);transform-origin:left;transition:transform .4s}
+.text-link:hover::after,.text-link:focus-visible::after{transform:scaleX(1)}
+.project-image-link .project-art img{transition:scale .7s cubic-bezier(.2,.7,.2,1);scale:1}
+.project-image-link:hover .project-art img,.project-image-link:focus-visible .project-art img{scale:1.045}
+.project-image-link::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent 50%,#0005);opacity:0;transition:opacity .45s}
+.project-image-link:hover::after,.project-image-link:focus-visible::after{opacity:1}
+.project-image-link .image-arrow,.project-image-link .project-cursor{z-index:3}
+.project-image-link:focus-visible .image-arrow{transform:rotate(45deg)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.plane-flight{will-change:auto}.project-image-link:hover .project-art img,.project-image-link:focus-visible .project-art img{scale:1}}

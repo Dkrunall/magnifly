@@ -7,6 +7,8 @@ import Motion from "@/components/motion";
 import "./globals.css";
 import "./modern.css";
 import "./hero.css";
+import "lenis/dist/lenis.css";
+import "./interactions.css";
 const display = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display",
