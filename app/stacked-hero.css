@@ -1,0 +1,44 @@
+/* One headline row with a separate, measurable takeoff stage beneath it. */
+.stacked-flight-hero .flight-world {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  margin: 28px 0 0;
+  padding-block: 20px;
+  gap: clamp(12px, 2vh, 28px);
+}
+.immersive-hero.stacked-flight-hero h1.flight-title {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: .2em;
+  width: 100%;
+  margin: 0;
+  font-size: clamp(32px, 11.5vw, 210px) !important;
+  line-height: 1;
+  letter-spacing: -.065em !important;
+  white-space: nowrap;
+}
+.stacked-flight-hero .flight-title > span,
+.stacked-flight-hero .flight-title > span:nth-child(2) {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  text-align: center;
+}
+.immersive-hero.stacked-flight-hero .plane-stage {
+  position: relative;
+  inset: auto;
+  width: min(62vw, 780px);
+  height: clamp(260px, 38vh, 420px);
+  min-height: 0;
+  margin: 0;
+  flex-shrink: 0;
+}
+@media (max-width: 600px) {
+  .stacked-flight-hero .flight-world { margin-top: 24px; padding-block: 16px; gap: 18px; }
+  .immersive-hero.stacked-flight-hero h1.flight-title { font-size: 11.5vw !important; }
+  .immersive-hero.stacked-flight-hero .plane-stage { width: 100%; height: clamp(230px, 34vh, 310px); }
+}

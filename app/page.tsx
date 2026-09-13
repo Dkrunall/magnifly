@@ -1,3 +1,5 @@
+
+import UiIcon from "@/components/ui-icon";
 import Link from "next/link";
 import Hero from "@/components/hero";
 import ServicesPreview from "@/components/services-preview";
@@ -11,7 +13,7 @@ export default function Home() {
         <span>MAGNIFLY MEDIA</span>
         <span>Strategy with purpose.</span>
         <span>Creative with direction.</span>
-        <span>Ideas take flight. ↗</span>
+        <span>Ideas take flight. <UiIcon name="arrow" /></span>
       </div>
       <section id="studio" className="intro section">
         <span className="eyebrow">01 / The studio</span>
@@ -20,7 +22,7 @@ export default function Home() {
           <br />
           We give it <em>direction.</em>
           <span className="manifesto-arrow" aria-hidden="true">
-            ↗
+            <UiIcon name="arrow" />
           </span>
         </h2>
         <p>
@@ -29,7 +31,7 @@ export default function Home() {
           to move your brand forward.
         </p>
         <Link className="text-link" href="/about">
-          Meet MAGNIFLY MEDIA ↗
+          Meet MAGNIFLY MEDIA <UiIcon name="arrow" />
         </Link>
       </section>
       <section className="section featured-work">
@@ -41,7 +43,7 @@ export default function Home() {
             <em>stand out.</em>
           </h2>
           <Link className="text-link" href="/brands">
-            All selected work ↗
+            All selected work <UiIcon name="arrow" />
           </Link>
         </div>
         <p className="concept-note">
@@ -61,7 +63,7 @@ export default function Home() {
             ["01 / ABOUT", "Meet the studio.", "Our thinking, our principles, and the four steps from first conversation to launch.", "/about", "Explore our approach"],
             ["02 / SERVICES", "Shape your next move.", "Find the right service, compare a website redesign, and try a campaign brief.", "/services", "Find your service"],
             ["03 / BRANDS", "See ideas in action.", "Explore the work, interact with a social feed, try the web and app demos, and play our reels.", "/brands", "Explore the work"],
-          ].map(([label,title,copy,href,action]) => <Link className="site-explore-card" href={href} key={href}><span className="eyebrow">{label}</span><h3>{title}</h3><p>{copy}</p><span className="site-explore-action">{action}<span aria-hidden="true">↗</span></span></Link>)}
+          ].map(([label,title,copy,href,action]) => <Link className="site-explore-card" href={href} key={href}><span className="eyebrow">{label}</span><h3>{title}</h3><p>{copy}</p><span className="site-explore-action">{action}<span aria-hidden="true"><UiIcon name="arrow" /></span></span></Link>)}
         </div>
       </section>
       <section className="section services-section">
@@ -86,7 +88,7 @@ export default function Home() {
           </h2>
         </div>
         <p className="home-process-copy">Discover the opportunity. Define the direction. Create the work. Amplify the idea. A clear process, with room for your input at every stage.</p>
-        <Link className="text-link" href="/about#our-process">Explore how we work ↗</Link>
+        <Link className="text-link" href="/about#our-process">Explore how we work <UiIcon name="arrow" /></Link>
       </section>
       <CTA />
     </main>

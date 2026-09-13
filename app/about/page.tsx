@@ -1,3 +1,5 @@
+
+import UiIcon from "@/components/ui-icon";
 import type { Metadata } from "next";
 import { CTA } from "@/components/shared";
 import { services } from "@/lib/content";
@@ -63,14 +65,14 @@ export default function About() {
             ],
           ].map(([title, text], i) => (
             <details key={title} name="studio-principle" open={i === 0}>
-              <summary><span className="eyebrow">0{i + 1}</span><h3>{title}</h3><span className="principle-toggle" aria-hidden="true">+</span></summary>
+              <summary><span className="eyebrow">0{i + 1}</span><h3>{title}</h3><span className="principle-toggle" aria-hidden="true"><UiIcon name="plus" /></span></summary>
               <div className="principle-answer"><span className="eyebrow">IN PRACTICE</span><p>{text}</p></div>
             </details>
           ))}
         </div>
         <div className="capabilities">
           <span className="eyebrow">Core capabilities</span>
-          <div className="studio-capability-links">{services.map((s, index) => <Link href={`/services#service-${index + 1}`} key={s.name}>{s.name}<span aria-hidden="true">↗</span></Link>)}</div>
+          <div className="studio-capability-links">{services.map((s, index) => <Link href={`/services#service-${index + 1}`} key={s.name}>{s.name}<span aria-hidden="true"><UiIcon name="arrow" /></span></Link>)}</div>
         </div>
       </section>
       <section className="section paper process" id="our-process">

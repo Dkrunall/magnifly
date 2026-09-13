@@ -1,4 +1,6 @@
 "use client";
+import UiIcon from "@/components/ui-icon";
+
 import { useEffect, useRef, useState } from "react";
 import { stages } from "@/lib/content";
 
@@ -38,15 +40,15 @@ export default function ProcessJourney() {
       <div className="journey-counter" aria-hidden="true">0{active + 1}<span> / 04</span></div>
       <div className="journey-progress" aria-hidden="true"><span style={{ transform: `scaleX(${(active + 1) / stages.length})` }} /></div>
       <nav aria-label="Process stages">
-        {stages.map((stage, index) => <a key={stage.name} href={`#process-step-${index}`} aria-current={active === index ? "step" : undefined} onClick={() => setActive(index)}><span>0{index + 1}</span>{stage.name}<span aria-hidden="true">↗</span></a>)}
+        {stages.map((stage, index) => <a key={stage.name} href={`#process-step-${index}`} aria-current={active === index ? "step" : undefined} onClick={() => setActive(index)}><span>0{index + 1}</span>{stage.name}<span aria-hidden="true"><UiIcon name="arrow" /></span></a>)}
       </nav>
       <p>One clear direction.<br />From the first question to launch.</p>
     </aside>
     <ol className="journey-stages">
       {stages.map((stage, index) => <li className="journey-stage" id={`process-step-${index}`} key={stage.name} data-active={active === index}>
-        <button className="journey-stage-heading" onClick={() => setActive(index)} aria-expanded={active === index} aria-controls={`process-output-${index}`}><span className="eyebrow">0{index + 1} /</span><h3>{stage.name}</h3><span aria-hidden="true">{active === index ? "−" : "+"}</span></button>
+        <button className="journey-stage-heading" onClick={() => setActive(index)} aria-expanded={active === index} aria-controls={`process-output-${index}`}><span className="eyebrow">0{index + 1} /</span><h3>{stage.name}</h3><span aria-hidden="true">{active === index ? <><UiIcon name="minus" /></> : <><UiIcon name="plus" /></>}</span></button>
         <p>{stage.text}</p>
-        <div id={`process-output-${index}`} className="journey-output" hidden={active !== index}><span className="eyebrow">WHAT YOU WALK AWAY WITH</span><p>{stage.output}</p><span className="journey-check" aria-hidden="true">↗</span></div>
+        <div id={`process-output-${index}`} className="journey-output" hidden={active !== index}><span className="eyebrow">WHAT YOU WALK AWAY WITH</span><p>{stage.output}</p><span className="journey-check" aria-hidden="true"><UiIcon name="arrow" /></span></div>
       </li>)}
     </ol>
   </div>;

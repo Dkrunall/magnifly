@@ -1,3 +1,5 @@
+
+import UiIcon from "@/components/ui-icon";
 import Link from "next/link";
 import Image from "next/image";
 import type { Project } from "@/lib/content";
@@ -72,14 +74,14 @@ export function ProjectCard({
         preview={<div className="project-concept-sheet" style={{ background: p.color, color: p.ink }}>
           <span className="eyebrow">{p.brand} / Creative direction</span>
           <strong>{p.phrase}</strong>
-          <div className="concept-disc" aria-hidden="true">↗</div>
+          <div className="concept-disc" aria-hidden="true"><UiIcon name="arrow" /></div>
           <span>{p.tags.join(" · ")}</span>
-          <span className="concept-open">Explore the concept ↗</span>
+          <span className="concept-open">Explore the concept <UiIcon name="arrow" /></span>
         </div>}
       >
         <ProjectArt project={p} />
         <span className="image-arrow" aria-hidden="true">
-          ↗
+          <UiIcon name="arrow" />
         </span>
       </ProjectHover>
       <div className="project-caption">
@@ -95,7 +97,7 @@ export function ProjectCard({
         <div className="project-meta">
           <span>{p.tags.join(" / ")}</span>
           <Link className="text-link" href={`/case-studies/${p.slug}`}>
-            View case study ↗
+            View case study <UiIcon name="arrow" />
           </Link>
         </div>
       </div>

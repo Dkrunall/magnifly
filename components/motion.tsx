@@ -45,7 +45,8 @@ export default function Motion() {
         const margin = Number.parseFloat(getComputedStyle(target).scrollMarginTop) || 24;
         const sectionNav = target.closest(".service-details")?.querySelector(".service-route-nav")
           ?? (target.classList.contains("case-chapter") ? document.querySelector(".case-chapters") : null);
-        const offset = Math.max(margin, sectionNav ? sectionNav.getBoundingClientRect().height + 20 : 24);
+        const header = document.querySelector(".header")?.getBoundingClientRect();
+        const offset = Math.max(margin, (header?.bottom ?? 0) + (sectionNav ? sectionNav.getBoundingClientRect().height : 0) + 20);
         lenis.scrollTo(target, { offset: -offset, onComplete: () => {
           const previous = target.getAttribute("tabindex");
           target.setAttribute("tabindex", "-1");

@@ -1,0 +1,121 @@
+.header { top: 0; height: 92px; margin: 0; padding: 0 5%; border: 0; border-bottom: 1px solid #ffffff15; border-radius: 0; background: #10130f; }
+.header.is-scrolled { border-color: #ffffff20; box-shadow: none; }
+.header-actions { display: flex; align-items: center; gap: 32px; margin-left: auto; }
+.header-contact { display: inline-flex; align-items: center; gap: 18px; min-height: 44px; font-size: 13px; }
+.header-contact svg { width: 18px; height: 18px; transition: transform .25s; }
+.header-contact:hover svg { transform: rotate(45deg); }
+.header-contact:is(:hover,[aria-current]) { color: #d6ff3f; }
+.header .menu-trigger { display: inline-flex; border-radius: 0; border: 0; border-left: 1px solid #ffffff30; padding-left: 28px; gap: 20px; }
+.header .menu-trigger:hover { color: #d6ff3f; }
+.header .menu-trigger:hover .menu-symbol path:first-child { transform: translateX(3px); }
+.header .menu-trigger:hover .menu-symbol path:last-child { transform: translateX(-3px); }
+.menu-editorial-grid { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: clamp(40px,8vw,140px); margin-block: auto; }
+.menu-editorial-grid > * { min-width: 0; }
+.header .modern-menu nav a { font-size: clamp(38px,5.2vw,86px); padding-block: 13px; transition: color .2s; }
+.header .modern-menu nav a:hover { color: #d6ff3f; }
+.menu-preview > .eyebrow { font-size: 10px; color: #a6b098; }
+.menu-preview-link { display: block; margin-top: 24px; }
+.menu-preview-image { position: relative; aspect-ratio: 1.2; overflow: hidden; background: #242a1e; animation: menu-art-enter .45s ease both; }
+.menu-preview-image img { object-fit: cover; }
+.menu-preview-caption { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 24px; }
+.menu-preview-caption span { display: block; font: 10px var(--font-mono); color: #a6b098; }
+.menu-preview-caption strong { display: block; font: 500 clamp(20px,2vw,32px)/1.2 var(--font-display); margin-top: 10px; }
+.menu-preview-caption > svg { flex-shrink: 0; }
+.menu-preview-link:hover .menu-preview-caption { color: #d6ff3f; }
+.modern-menu .menu-project { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 28px; }
+.modern-menu .menu-project > a { margin: 0; }
+.service-route-nav,.case-chapters { top: 92px; }
+@keyframes menu-art-enter { from { opacity: .3; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media(max-width:900px) {
+  .header { height: 76px; padding-inline: 5%; }
+  .header-actions { gap: 16px; }
+  .header .menu-trigger { padding-left: 16px; gap: 10px; }
+  .menu-editorial-grid { display: block; margin-block: 0; }
+  .menu-preview { display: none; }
+  .header .modern-menu nav a { font-size: clamp(32px,8vw,58px); padding-block: 16px; }
+  .modern-menu .menu-project { display: block; margin-top: auto; }
+  .modern-menu .menu-project > a { margin-top: 16px; }
+  .service-route-nav,.case-chapters { top: 76px; }
+}
+@media(max-width:420px) { .header .logo { width: 126px !important; }.header-actions { gap: 10px; }.header-contact { font-size: 12px; gap: 5px; }.header .menu-trigger { padding: 8px 0 8px 10px; }.header .menu-trigger > span { display: none; } }
+@media(max-height:600px) { .header .modern-menu nav a { font-size: 32px; padding-block: 10px; }.menu-preview-image { max-height: 210px; }.modern-menu .menu-project { margin-top: 24px; } }
+@media(prefers-reduced-motion:reduce) { .menu-preview-image { animation: none; }.header-contact svg,.header .modern-menu nav a { transition: none; } }
+
+/* Keep the floating shell and sticky section navigation on one spacing scale. */
+:root { --header-top: max(12px, env(safe-area-inset-top)); --header-height: 76px; --header-clearance: calc(var(--header-top) + var(--header-height) + 12px); }
+.header { top: var(--header-top); height: var(--header-height); width: min(1320px,calc(100% - 48px)); margin: 12px auto; padding: 0 24px; border: 1px solid #ffffff26; border-radius: 18px; background: #141a12ed; box-shadow: 0 8px 32px #0002; gap: 16px; }
+.header.is-scrolled { background: #141a12e8; border-color: #ffffff38; backdrop-filter: blur(20px); box-shadow: 0 12px 40px #0004; }
+.header > a { min-width: 0; flex-shrink: 1; }
+.header-actions { flex-shrink: 0; gap: 16px; }
+.header-contact { border-radius: 100px; padding: 12px 18px; background: #d6ff3f; color: #111; gap: 14px; transition: background .2s; }
+.header-contact:is(:hover,[aria-current]) { color: #111; background: #e5ff91; }
+.header .menu-trigger { min-width: 92px; border: 0; padding: 10px 12px; border-radius: 100px; gap: 12px; }
+.header .menu-trigger:hover { background: #ffffff0a; }
+.service-route-nav,.case-chapters { top: var(--header-clearance); }
+html { scroll-padding-top: calc(var(--header-clearance) + 12px); }
+.header .modern-menu { padding: max(28px,env(safe-area-inset-top)) max(5%,env(safe-area-inset-right)) max(28px,env(safe-area-inset-bottom)) max(5%,env(safe-area-inset-left)); }
+.modern-menu .menu-top,.menu-editorial-grid,.modern-menu .menu-project { flex-shrink: 0; }
+.modern-menu .menu-top { margin-bottom: 28px; }
+.menu-editorial-grid { width: 100%; max-width: 1440px; align-self: center; gap: clamp(32px,6vw,100px); }
+.header .modern-menu nav a { grid-template-columns: 28px minmax(0,1fr) 32px; gap: 18px; font-size: clamp(38px,5vw,76px); }
+.header .modern-menu nav a > span:nth-child(2) { transition: transform .25s; }
+.header .modern-menu nav a:is(:hover,:focus-visible) > span:nth-child(2) { transform: translateX(8px); }
+.header .modern-menu nav a[aria-current] { color: #d6ff3f; }
+.menu-preview-image { border-radius: 10px; }
+.menu-preview-caption strong { overflow-wrap: break-word; }
+.modern-menu .menu-project { flex-wrap: wrap; }
+.modern-menu .menu-project > a { min-height: 44px; }
+@media(min-width:901px) and (max-height:1000px) {
+  .header .modern-menu nav a { font-size: clamp(34px,4vw,52px); padding-block: 10px; }
+  .menu-preview-image { max-height: 280px; }
+  .menu-preview-caption { padding-top: 16px; }
+}
+@media(min-width:901px) and (max-height:760px) {
+  .header .modern-menu { padding-block: 20px; }
+  .modern-menu .menu-top { margin-bottom: 16px; }
+  .header .modern-menu nav a { font-size: clamp(24px,3vw,34px); padding-block: 6px; }
+  .menu-preview-image { max-height: 180px; }
+  .menu-preview-caption { padding-top: 10px; }
+  .modern-menu .menu-project { margin-top: 12px; }
+}
+@media(min-width:901px) and (max-height:600px) {
+  .header .modern-menu { padding-block: 14px; }
+  .modern-menu .menu-top { margin-bottom: 10px; }
+  .header .modern-menu nav a { font-size: clamp(18px,2.4vw,24px); padding-block: 4px; }
+  .menu-preview-image { max-height: 110px; }
+  .menu-preview-caption { padding-top: 6px; }
+  .modern-menu .menu-project { margin-top: 8px; }
+}
+@media(max-width:900px) {
+  :root { --header-top: max(8px,env(safe-area-inset-top)); --header-height: 66px; }
+  .header { width: calc(100% - 24px); margin-block: 8px; padding-inline: 16px; border-radius: 14px; gap: 10px; }
+  .header .logo { width: clamp(126px,27vw,200px) !important; }
+  .header .modern-menu nav a { font-size: clamp(32px,7vw,58px); padding-block: 15px; }
+  .modern-menu .menu-project { padding-top: 20px; }
+  .menu-editorial-grid { margin-bottom: 24px; }
+}
+@media(max-width:480px) {
+  .header { padding-inline: 12px; }
+  .header-actions { gap: 6px; }
+  .header-contact { padding: 10px 12px; font-size: 12px; gap: 6px; }
+  .header-contact svg { width: 15px; height: 15px; }
+  .header .menu-trigger { min-width: 44px; width: 44px; padding: 9px; }
+  .header .menu-trigger > span { display: none; }
+  .header .modern-menu nav a { grid-template-columns: 20px minmax(0,1fr) 24px; gap: 12px; }
+  .modern-menu .menu-top .eyebrow { font-size: 10px; }
+}
+@media(max-width:360px) {
+  /* Below ~360px the logo and CTA no longer both fit at readable sizes:
+     collapse the CTA to an icon-only button so the logo keeps its floor width. */
+  .header { gap: 10px; }
+  .header-contact { min-width: 44px; width: 44px; height: 44px; padding: 0; justify-content: center; }
+  .header-contact span { display: none; }
+}
+@media(max-height:500px) {
+  .header .modern-menu { padding-block: 16px; }
+  .modern-menu .menu-top { margin-bottom: 16px; }
+  .header .modern-menu nav { margin-block: 12px; }
+  .header .modern-menu nav a { font-size: 30px; padding-block: 10px; }
+  .modern-menu .menu-project { margin-top: 8px; }
+}
+@media(prefers-reduced-motion:reduce) { .header .modern-menu nav a > span:nth-child(2),.header-contact { transition: none; }.header .modern-menu nav a:is(:hover,:focus-visible) > span:nth-child(2) { transform: none; } }

@@ -1,3 +1,5 @@
+
+import UiIcon from "@/components/ui-icon";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { services, projects } from "@/lib/content";
@@ -62,7 +64,7 @@ export default function Services() {
                 ))}
               </ul>
               <Link className="text-link" href={`/contact?service=${encodeURIComponent(s.name)}`}>
-                Let’s talk about {s.name.toLowerCase()} ↗
+                Let’s talk about {s.name.toLowerCase()} <UiIcon name="arrow" />
               </Link>
             </div>
             <div>
@@ -107,7 +109,7 @@ export default function Services() {
               <strong>{sub}</strong>
               <p>{text}</p>
               <Link className="text-link" href="/contact">
-                Discuss your project ↗
+                Discuss your project <UiIcon name="arrow" />
               </Link>
             </article>
           ))}
@@ -120,7 +122,7 @@ export default function Services() {
           <details key={q} name="services-faq">
             <summary>
               {q}
-              <span aria-hidden="true">+</span>
+              <span aria-hidden="true"><UiIcon name="plus" /></span>
             </summary>
             <p>{a}</p>
           </details>

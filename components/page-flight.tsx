@@ -115,7 +115,8 @@ export default function PageFlight() {
         }
         const foot = footer.getBoundingClientRect();
         // Reserve a clear landing bay above the footer links.
-        endY = foot.top + window.scrollY + 95;
+        const landingBay = footer.querySelector(".footer-landing")?.getBoundingClientRect();
+        endY = landingBay ? landingBay.top + window.scrollY + 85 : foot.top + window.scrollY + 95;
         points.push({ x: routeX(.5), y: endY });
         let d = `M${points[0].x} ${points[0].y}`;
         for (let i = 1; i < points.length; i++) {

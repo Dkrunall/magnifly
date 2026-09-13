@@ -1,4 +1,6 @@
 "use client";
+import UiIcon from "@/components/ui-icon";
+
 import { useState } from "react";
 import Link from "next/link";
 
@@ -13,10 +15,10 @@ export default function ProjectStart() {
   return <div className="project-start">
     <span className="eyebrow">01 / CHOOSE YOUR NEXT MOVE</span>
     <div className="project-direction-options" role="group" aria-label="What would you like to do?">
-      {directions.map((item, index) => <button type="button" key={item.label} aria-pressed={selected === index} onClick={() => setSelected(index)}><span>{item.label}</span><span aria-hidden="true">{selected === index ? "↗" : "+"}</span></button>)}
+      {directions.map((item, index) => <button type="button" key={item.label} aria-pressed={selected === index} onClick={() => setSelected(index)}><span>{item.label}</span><span aria-hidden="true">{selected === index ? <><UiIcon name="arrow" /></> : <><UiIcon name="plus" /></>}</span></button>)}
     </div>
     <p className="project-direction-detail" aria-live="polite">{direction.detail}</p>
-    <Link className="button dark-button" href={`/contact?service=${encodeURIComponent(direction.service)}`}>Let’s talk about it <span>↗</span></Link>
-    <Link className="direction-unsure" href="/contact">Still figuring it out? Start here ↗</Link>
+    <Link className="button dark-button" href={`/contact?service=${encodeURIComponent(direction.service)}`}>Let’s talk about it <span><UiIcon name="arrow" /></span></Link>
+    <Link className="direction-unsure" href="/contact">Still figuring it out? Start here <UiIcon name="arrow" /></Link>
   </div>;
 }

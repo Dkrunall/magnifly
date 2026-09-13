@@ -1,4 +1,6 @@
 "use client";
+import UiIcon from "@/components/ui-icon";
+
 import dynamic from "next/dynamic";
 import { Component, useEffect, useRef, useState, type ReactNode } from "react";
 const Scene = dynamic(() => import("./plane-scene"), { ssr: false });
@@ -91,8 +93,8 @@ export default function HeroPlane() {
       <div className="orbit-system" aria-hidden="true">
         <div className="orbit orbit-one" />
         <div className="orbit orbit-two" />
-        <span className="orbit-mark">+</span>
-        <span className="orbit-mark orbit-mark-two">+</span>
+        <span className="orbit-mark"><UiIcon name="plus" /></span>
+        <span className="orbit-mark orbit-mark-two"><UiIcon name="plus" /></span>
         <div className="orbit-origin" />
       </div>
       <div className="plane-flight" aria-hidden="true">

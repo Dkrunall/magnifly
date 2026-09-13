@@ -30,7 +30,7 @@ export default function Hero() {
     return () => { cancelAnimationFrame(frame); cancel(); window.removeEventListener("magnifly-intro-finished", enter); window.removeEventListener("replay-intro", cancel); };
   }, []);
   return (
-    <section ref={root} className="hero immersive-hero">
+    <section ref={root} className="hero immersive-hero stacked-flight-hero">
       <Intro />
       <div className="flight-topline">
         <span><i /> INDEPENDENT CREATIVE STUDIO</span>
@@ -38,7 +38,7 @@ export default function Hero() {
       <div className="flight-world">
         <div className="flight-grid" aria-hidden="true" />
         <svg className="flight-route" viewBox="0 0 1400 640" preserveAspectRatio="none" aria-hidden="true"><path d="M-80 560C180 610 270 20 660 120S1000 690 1490 90" /></svg>
-        <h1 className="flight-title"><span>THINK</span><span>BIGGER<span className="flight-period">.</span></span></h1>
+        <h1 className="flight-title"><span>THINK</span>{" "}<span>BIGGER<span className="flight-period">.</span></span></h1>
         <HeroPlane />
       </div>
       <div className="flight-bottomline">

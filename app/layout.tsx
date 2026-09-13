@@ -1,3 +1,5 @@
+
+import Footer from "@/components/footer";
 import type { Metadata } from "next";
 import { Space_Grotesk, Manrope, IBM_Plex_Mono } from "next/font/google";
 import Link from "next/link";
@@ -11,6 +13,10 @@ import "./hero.css";
 import "lenis/dist/lenis.css";
 import "./interactions.css";
 import "./responsive.css";
+import "./stacked-hero.css";
+import "./navigation.css";
+import "./editorial-navigation.css";
+import "./footer.css";
 const display = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display",
@@ -57,7 +63,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${display.variable} ${body.variable} ${mono.variable}`}>
+      <body id="page-top" className={`${display.variable} ${body.variable} ${mono.variable}`}>
         <a className="skip-link" href="#content">
           Skip to content
         </a>
@@ -75,19 +81,7 @@ export default function RootLayout({
           <Navigation />
         </header>
         <div id="content">{children}</div>
-        <footer className="footer">
-          <Link href="/" aria-label="MAGNIFLY MEDIA home">
-            <Image
-              src="/logo.png"
-              alt="MAGNIFLY MEDIA"
-              width={1600}
-              height={243}
-              className="logo"
-            />
-          </Link>
-          <span>Ideas take flight.</span>
-          <Link href="/contact">Start a conversation ↗</Link>
-        </footer>
+        <Footer />
         <Motion />
         <PageFlight />
       </body>

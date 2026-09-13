@@ -9,6 +9,8 @@
 .development-frame > div,.development-art > p { font-size: 12px; }
 .service-preview-art:has(.development-art) .service-art-caption { position: static; background: #17281d; }
 .has-page-flight .immersive-hero .plane-flight { visibility: hidden; }
+.ui-icon { display: inline-block; width: 1em; height: 1em; min-width: 1em; flex-shrink: 0; vertical-align: -.15em; }
+.nav-cta .ui-icon { margin-left: .5em; }
 .site-explore { background: #171b13; color: #f5f3ee; }
 .site-explore-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
 .site-explore-card { display: flex; flex-direction: column; padding: clamp(22px,3vw,44px); border: 1px solid #687457; transition: background .2s,color .2s; }

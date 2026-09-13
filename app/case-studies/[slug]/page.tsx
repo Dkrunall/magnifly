@@ -1,3 +1,5 @@
+
+import UiIcon from "@/components/ui-icon";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -45,7 +47,7 @@ export default async function CaseStudy({
     <main>
       <section className="section case-heading">
         <Link href="/brands" className="eyebrow">
-          ← Back to selected work
+          <UiIcon name="left" /> Back to selected work
         </Link>
         <div className="case-title">
           <h1>{p.brand}</h1>
@@ -208,7 +210,7 @@ export default async function CaseStudy({
                 <br />
                 perspective.
               </strong>
-              <span className="eyebrow">The next chapter starts here ↗</span>
+              <span className="eyebrow">The next chapter starts here <UiIcon name="arrow" /></span>
             </div>
             <p>
               Meet {p.brand}. A concept exploring a different direction for{" "}
@@ -223,7 +225,7 @@ export default async function CaseStudy({
       >
         <span className="eyebrow">Next concept / {next.industry}</span>
         <h2>
-          {next.brand} <span>↗</span>
+          {next.brand} <span><UiIcon name="arrow" /></span>
         </h2>
         <div className="next-project-art" aria-hidden="true"><ProjectArt project={next} /></div>
         <span className="next-project-description">{next.title}</span>

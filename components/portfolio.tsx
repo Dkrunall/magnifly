@@ -1,4 +1,6 @@
 "use client";
+import UiIcon from "@/components/ui-icon";
+
 import { useEffect, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "@/lib/content";
@@ -42,11 +44,11 @@ export default function Portfolio() {
           <article className="portfolio-entry brand-project" key={p.slug} style={{ animationDelay: `${index * 65}ms` }}>
             <Link className="brand-project-visual" href={`/case-studies/${p.slug}`} aria-label={`Explore ${p.brand} case study`}>
               <ProjectArt project={p} />
-              <span className="brand-project-open" aria-hidden="true">Explore project <span>↗</span></span>
+              <span className="brand-project-open" aria-hidden="true">Explore project <span><UiIcon name="arrow" /></span></span>
             </Link>
             <div className="brand-project-caption">
               <div className="brand-project-kicker"><span>0{projects.indexOf(p) + 1} / {p.industry}</span><span>{p.tags[0]}</span></div>
-              <Link href={`/case-studies/${p.slug}`} className="brand-project-title"><h3>{p.brand}</h3><span aria-hidden="true">↗</span></Link>
+              <Link href={`/case-studies/${p.slug}`} className="brand-project-title"><h3>{p.brand}</h3><span aria-hidden="true"><UiIcon name="arrow" /></span></Link>
               <p>{p.title}</p>
               <div className="brand-project-tags">{p.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
             </div>

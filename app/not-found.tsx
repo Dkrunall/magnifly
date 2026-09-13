@@ -1,3 +1,5 @@
+
+import UiIcon from "@/components/ui-icon";
 import Link from "next/link";
 export default function NotFound() {
   return (
@@ -9,7 +11,7 @@ export default function NotFound() {
         your way back.
       </h1>
       <Link className="button" href="/">
-        Back to the studio ↗
+        Back to the studio <UiIcon name="arrow" />
       </Link>
     </main>
   );

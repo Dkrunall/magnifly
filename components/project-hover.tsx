@@ -1,4 +1,6 @@
 "use client";
+import UiIcon from "@/components/ui-icon";
+
 import Link from "next/link";
 import { useRef, useState, type ReactNode } from "react";
 export default function ProjectHover({
@@ -52,10 +54,10 @@ export default function ProjectHover({
       <span className="project-cursor" aria-hidden="true">
         View
         <br />
-        project ↗
+        project <UiIcon name="arrow" />
       </span>
     </Link>
-    {preview && <button className="project-preview-toggle" aria-expanded={revealed} onClick={() => { setExpanded(!revealed); setDismissed(revealed); }}>{revealed ? "Close preview −" : "Inside the concept +"}</button>}
+    {preview && <button className="project-preview-toggle" aria-expanded={revealed} onClick={() => { setExpanded(!revealed); setDismissed(revealed); }}>{revealed ? <>Close preview <UiIcon name="minus" /></> : <>Inside the concept <UiIcon name="plus" /></>}</button>}
     </div>
   );
 }

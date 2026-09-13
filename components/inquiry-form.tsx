@@ -1,4 +1,6 @@
 "use client";
+import UiIcon from "@/components/ui-icon";
+
 import { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -161,7 +163,7 @@ export default function InquiryForm() {
       </p>
       <button className="button" type="submit" disabled={isSubmitting}>
         {isSubmitting ? "Sending your inquiry…" : "Send inquiry"}{" "}
-        <span>↗</span>
+        <span><UiIcon name="arrow" /></span>
       </button>
       {deliveryError && <p role="alert" className="field-error">{deliveryError}</p>}
       <div

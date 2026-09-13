@@ -1,4 +1,6 @@
 "use client";
+import UiIcon from "@/components/ui-icon";
+
 import { useState } from "react";
 import Link from "next/link";
 import { services, projects } from "@/lib/content";
@@ -18,7 +20,7 @@ export default function ServicesPreview() {
         <p>{services[active].approach}</p>
         <ul className="service-deliverable-chips">{services[active].deliverables.slice(0, 3).map(item => <li key={item}>{item}</li>)}</ul>
         <Link className="text-link" href={`/services#service-${active + 1}`}>
-          Explore the service ↗
+          Explore the service <UiIcon name="arrow" />
         </Link>
       </div>
       <div className="service-list">
@@ -38,7 +40,7 @@ export default function ServicesPreview() {
               <h3>{s.name}</h3>
               <p className="mobile-description">{s.short}</p>
             </div>
-            <span aria-hidden="true">↗</span>
+            <span aria-hidden="true"><UiIcon name="arrow" /></span>
           </button>
         ))}
       </div>
