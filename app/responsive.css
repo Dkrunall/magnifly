@@ -8,6 +8,7 @@
 .development-frame strong { display: block; font: 500 clamp(26px,4vw,58px)/1.05 var(--font-display); letter-spacing: -.05em; margin: 30px 0; }
 .development-frame > div,.development-art > p { font-size: 12px; }
 .service-preview-art:has(.development-art) .service-art-caption { position: static; background: #17281d; }
+.has-page-flight .immersive-hero .plane-flight { visibility: hidden; }
 .site-explore { background: #171b13; color: #f5f3ee; }
 .site-explore-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
 .site-explore-card { display: flex; flex-direction: column; padding: clamp(22px,3vw,44px); border: 1px solid #687457; transition: background .2s,color .2s; }

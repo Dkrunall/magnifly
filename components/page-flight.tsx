@@ -41,7 +41,6 @@ export default function PageFlight() {
         const behind = route.getPointAtLength(Math.max(0, distance - 2));
         const raw = Math.min(1, scroll / 420);
         const takeoff = raw * raw * (3 - 2 * raw);
-        const blend = Math.min(1, scroll / 220);
         const destination = destinations.find(item => targetY >= item.top && targetY < item.bottom);
         const landing = (destination ? Math.max(0, Math.min(1, (targetY - destination.top) / 120, (destination.bottom - targetY) / 120)) : 0) * takeoff;
         // Labels affect only their opacity: the craft stays on the route with
@@ -53,8 +52,9 @@ export default function PageFlight() {
         const flightWidth = width < 700 ? Math.min(190, width * .48) : 300;
         const size = 1 + (flightWidth / stageWidth - 1) * takeoff;
         craft.style.transform = `translate3d(${point.x - stageWidth / 2}px, ${point.y - scroll - stageHeight / 2}px, 0) rotate(${angle}deg) scale(${size})`;
-        craft.style.opacity = String(blend);
-        heroPlane.style.opacity = String(1 - blend);
+        // The same SVG owns the plane at rest and in flight. Crossfading a
+        // stationary WebGL plane with this moving SVG leaves a ghost behind.
+        craft.style.opacity = "1";
         route.style.strokeDashoffset = String(length - distance);
         if (labels) labels.style.opacity = String(Math.max(landing, touchdown));
         if (sectionLabel && destination && sectionLabel.textContent !== destination.name) sectionLabel.textContent = destination.name;
@@ -91,15 +91,19 @@ export default function PageFlight() {
           [".featured-grid .project-card:nth-child(1)", .09, .65],
           [".featured-grid .project-card:nth-child(2)", .91, .65],
           [".featured-grid .project-card:nth-child(3)", .09, .72],
-          ["#brand-playground", .84, .12],
-          ["#brand-playground", .16, .48],
-          ["#brand-playground", .84, .88],
+          ["#brand-playground", .78, .25],
+          ["#brand-playground", .22, .75],
           ["#redesign-preview", .18, .18],
           ["#redesign-preview", .82, .56],
           ["#redesign-preview", .18, .9],
           ["#campaign-builder", .82, .25], ["#campaign-builder", .18, .8],
           ["#reel-showcase", .82, .25], ["#reel-showcase", .18, .8],
-          [".services-section", .91, .5], [".process", .1, .55],
+          // Match Explore's two broad bends, continuing the same rhythm
+          // across the boundary rather than turning again at section entry.
+          [".services-section", .78, .25],
+          [".services-section", .22, .75],
+          [".process", .78, .25],
+          [".process", .22, .75],
           [".closing", .87, .75],
         ];
         for (const [selector, horizontal, vertical] of stops) {
@@ -139,7 +143,6 @@ export default function PageFlight() {
         resizeObserver.disconnect();
         cancelAnimationFrame(frame);
         document.body.classList.remove("has-page-flight");
-        heroPlane.style.removeProperty("opacity");
         craft.style.opacity = "0";
       };
     });
