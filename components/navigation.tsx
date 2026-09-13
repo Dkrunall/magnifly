@@ -51,7 +51,7 @@ export default function Navigation() {
       >
         <Menu size={24} />
       </button>
-      <dialog ref={dialog} className="mobile-menu">
+      <dialog ref={dialog} className="mobile-menu" aria-label="Navigation">
         <div className="menu-top">
           <span className="eyebrow">MAGNIFLY MEDIA</span>
           <button aria-label="Close navigation" onClick={close} autoFocus>
@@ -59,12 +59,13 @@ export default function Navigation() {
           </button>
         </div>
         <nav aria-label="Mobile navigation">
-          {links.map(([label, href]) => (
+          {links.map(([label, href], index) => (
             <Link
               key={href}
               href={href}
               onClick={close}
               aria-current={path === href ? "page" : undefined}
+              style={{ animationDelay: `${100 + index * 70}ms` }}
             >
               {label}
             </Link>

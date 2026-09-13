@@ -6,15 +6,25 @@ import { inquirySchema, type Inquiry } from "@/lib/inquiry";
 import { services } from "@/lib/content";
 export default function InquiryForm() {
   const [complete, setComplete] = useState(false);
+  const [deliveryError, setDeliveryError] = useState("");
   const status = useRef<HTMLDivElement>(null);
   const {
     register,
     handleSubmit,
+    setValue,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<Inquiry>({
     resolver: zodResolver(inquirySchema),
     defaultValues: { services: [] },
   });
+  const selectedServices = watch("services") || [];
+  useEffect(() => {
+    const chosen = new URLSearchParams(window.location.search).get("service");
+    if (chosen && services.some(service => service.name === chosen)) {
+      setValue("services", [chosen]);
+    }
+  }, [setValue]);
   const error = (key: keyof Inquiry) =>
     errors[key] ? (
       <p className="field-error" id={`${key}-error`} role="alert">
@@ -24,20 +34,32 @@ export default function InquiryForm() {
   useEffect(() => {
     if (complete) status.current?.focus();
   }, [complete]);
-  async function submit() {
+  async function submit(data: Inquiry) {
     setComplete(false);
-    await new Promise((r) => setTimeout(r, 350));
-    setComplete(true);
+    setDeliveryError("");
+    try {
+      const response = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data), signal: AbortSignal.timeout(25000) });
+      if (!response.ok) {
+        const result = await response.json().catch(() => null);
+        throw new Error(result?.message || "Unable to send your inquiry. Please try again.");
+      }
+      setComplete(true);
+    } catch (error) { setDeliveryError(error instanceof Error && error.name !== "TimeoutError" ? error.message : "Delivery could not be confirmed. Please wait before retrying."); }
   }
   return (
     <form noValidate onSubmit={handleSubmit(submit)} className="inquiry-form">
       <div className="demo-note">
-        <span className="eyebrow">Demo inquiry form</span>
+        <span className="eyebrow">Your project brief</span>
         <p>
-          You can explore the form and validate your brief. Nothing is sent or
-          stored.
+          Send your brief to the studio. We’ll use these details to respond to your inquiry.
         </p>
       </div>
+      <div className="brief-direction" aria-live="polite">
+        <span className="eyebrow">YOUR NEXT MOVE</span>
+        <strong>{selectedServices.length ? selectedServices.join(" + ") : "Let’s find your direction."}</strong>
+        <p>{selectedServices.length ? "Your choice is included below. You can add or change services as you go." : "Tell us a little about yourself and the idea you have in mind."}</p>
+      </div>
+      <h3 className="brief-step-title"><span>01 /</span> A little about you</h3>
       <div className="form-grid">
         {(
           [
@@ -65,7 +87,7 @@ export default function InquiryForm() {
       <fieldset
         aria-describedby={errors.services ? "services-error" : undefined}
       >
-        <legend>What can we help with?</legend>
+        <legend className="brief-step-title"><span>02 /</span> What can we help with?</legend>
         <div className="service-options">
           {services.map((s) => (
             <label key={s.name}>
@@ -76,6 +98,7 @@ export default function InquiryForm() {
         </div>
         {error("services")}
       </fieldset>
+      <h3 className="brief-step-title"><span>03 /</span> Where you want to go</h3>
       <div className="form-grid">
         <div className="field">
           <label htmlFor="budget">Budget range (INR)</label>
@@ -137,9 +160,10 @@ export default function InquiryForm() {
         Budget ranges help frame your brief. They are not service prices.
       </p>
       <button className="button" type="submit" disabled={isSubmitting}>
-        {isSubmitting ? "Checking your brief…" : "Preview inquiry"}{" "}
+        {isSubmitting ? "Sending your inquiry…" : "Send inquiry"}{" "}
         <span>↗</span>
       </button>
+      {deliveryError && <p role="alert" className="field-error">{deliveryError}</p>}
       <div
         ref={status}
         tabIndex={-1}
@@ -148,8 +172,8 @@ export default function InquiryForm() {
       >
         {complete && (
           <>
-            <strong>Your brief is ready to review.</strong>
-            <p>This is a demo. Your inquiry has not been sent or stored.</p>
+            <strong>Your inquiry has been submitted.</strong>
+            <p>Our mail server accepted your brief. Thank you for sharing your project.</p>
           </>
         )}
       </div>

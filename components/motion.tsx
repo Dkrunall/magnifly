@@ -42,7 +42,11 @@ export default function Motion() {
         if (!target) return;
         event.preventDefault();
         history.pushState(history.state, "", url.hash);
-        lenis.scrollTo(target, { offset: -24, onComplete: () => {
+        const margin = Number.parseFloat(getComputedStyle(target).scrollMarginTop) || 24;
+        const sectionNav = target.closest(".service-details")?.querySelector(".service-route-nav")
+          ?? (target.classList.contains("case-chapter") ? document.querySelector(".case-chapters") : null);
+        const offset = Math.max(margin, sectionNav ? sectionNav.getBoundingClientRect().height + 20 : 24);
+        lenis.scrollTo(target, { offset: -offset, onComplete: () => {
           const previous = target.getAttribute("tabindex");
           target.setAttribute("tabindex", "-1");
           target.focus({ preventScroll: true });

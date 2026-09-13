@@ -2,7 +2,7 @@ import Link from "next/link";
 import Hero from "@/components/hero";
 import ServicesPreview from "@/components/services-preview";
 import { CTA, ProjectCard } from "@/components/shared";
-import { projects, stages } from "@/lib/content";
+import { projects } from "@/lib/content";
 export default function Home() {
   return (
     <main>
@@ -54,6 +54,16 @@ export default function Home() {
           ))}
         </div>
       </section>
+      <section className="section site-explore" id="brand-playground">
+        <div className="section-title"><span className="eyebrow">EXPLORE MAGNIFLY</span><h2>Find your<br /><em>next direction.</em></h2></div>
+        <div className="site-explore-grid">
+          {[
+            ["01 / ABOUT", "Meet the studio.", "Our thinking, our principles, and the four steps from first conversation to launch.", "/about", "Explore our approach"],
+            ["02 / SERVICES", "Shape your next move.", "Find the right service, compare a website redesign, and try a campaign brief.", "/services", "Find your service"],
+            ["03 / BRANDS", "See ideas in action.", "Explore the work, interact with a social feed, try the web and app demos, and play our reels.", "/brands", "Explore the work"],
+          ].map(([label,title,copy,href,action]) => <Link className="site-explore-card" href={href} key={href}><span className="eyebrow">{label}</span><h3>{title}</h3><p>{copy}</p><span className="site-explore-action">{action}<span aria-hidden="true">↗</span></span></Link>)}
+        </div>
+      </section>
       <section className="section services-section">
         <div className="section-title">
           <span className="eyebrow">03 / Our capabilities</span>
@@ -75,19 +85,8 @@ export default function Home() {
             <br />a clear way forward.
           </h2>
         </div>
-        <ol className="process-grid">
-          {stages.map((s, i) => (
-            <li key={s.name}>
-              <span className="process-point">0{i + 1}</span>
-              <h3>{s.name}</h3>
-              <p>{s.text}</p>
-              <div className="process-output">
-                <span className="eyebrow">You receive</span>
-                <p>{s.output}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
+        <p className="home-process-copy">Discover the opportunity. Define the direction. Create the work. Amplify the idea. A clear process, with room for your input at every stage.</p>
+        <Link className="text-link" href="/about#our-process">Explore how we work ↗</Link>
       </section>
       <CTA />
     </main>

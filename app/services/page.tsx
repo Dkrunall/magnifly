@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { services, projects } from "@/lib/content";
 import { CTA, ProjectArt } from "@/components/shared";
+import ServiceNavigation from "@/components/service-navigation";
+import StudioPageHero from "@/components/studio-page-hero";
+import RedesignPreview from "@/components/redesign-preview";
+import CampaignBuilder from "@/components/campaign-builder";
+import PageSections from "@/components/page-sections";
+import DevelopmentArt from "@/components/development-art";
 export const metadata: Metadata = {
   title: "Services",
   description:
@@ -31,24 +37,11 @@ const faqs = [
 ];
 export default function Services() {
   return (
-    <main>
-      <section className="page-heading section">
-        <span className="eyebrow">
-          What we do / Built around your next step
-        </span>
-        <h1>
-          Good strategy.
-          <br />
-          <span className="outline">Great creative.</span>
-          <br />
-          Real direction.
-        </h1>
-        <p>
-          From finding your voice to making it heard. Six connected disciplines,
-          shaped around what your brand needs.
-        </p>
-      </section>
+    <main className="studio-inner-page services-page">
+      <StudioPageHero number="03" label="OUR CAPABILITIES" first="IDEAS INTO" second="IMPACT" description="Brand, social, web, and app experiences. Eight connected disciplines, shaped around your next move." target="#service-1" action="Explore our services" />
+      <PageSections links={[["Capabilities", "#service-1"], ["Try our approach", "#service-demos"], ["Ways to work together", "#engagements"], ["FAQs", "#questions"]]} />
       <div className="service-details">
+        <ServiceNavigation />
         {services.map((s, i) => (
           <section
             className={`section service-detail ${i % 2 === 0 ? "paper" : ""}`}
@@ -68,20 +61,21 @@ export default function Services() {
                   <li key={d}>{d}</li>
                 ))}
               </ul>
-              <Link className="text-link" href="/contact">
+              <Link className="text-link" href={`/contact?service=${encodeURIComponent(s.name)}`}>
                 Let’s talk about {s.name.toLowerCase()} ↗
               </Link>
             </div>
             <div>
-              <ProjectArt project={projects[i]} />
+              {projects[i] ? <ProjectArt project={projects[i]} /> : <DevelopmentArt app={i === 7} />}
               <p className="visual-caption">
-                {projects[i].brand} — {projects[i].industry} concept exploration
+                {projects[i] ? `${projects[i].brand} — ${projects[i].industry} concept exploration` : "From prototype to launch, shaped around your users."}
               </p>
             </div>
           </section>
         ))}
       </div>
-      <section className="section">
+      <div id="service-demos"><RedesignPreview /><CampaignBuilder /></div>
+      <section className="section" id="engagements">
         <div className="section-title">
           <span className="eyebrow">Ways to work together</span>
           <h2>
@@ -119,11 +113,11 @@ export default function Services() {
           ))}
         </div>
       </section>
-      <section className="section paper faq">
+      <section className="section paper faq" id="questions">
         <span className="eyebrow">Before we begin</span>
         <h2>A few good questions.</h2>
         {faqs.map(([q, a]) => (
-          <details key={q}>
+          <details key={q} name="services-faq">
             <summary>
               {q}
               <span aria-hidden="true">+</span>

@@ -1,4 +1,8 @@
 import http from "node:http";
+import { loadEnvFile } from "node:process";
+import { createContactHandler } from "./contact.mjs";
+try { loadEnvFile(".env.local"); } catch (error) { if (error.code !== "ENOENT") throw error; }
+const contact = createContactHandler();
 import { readFile, stat } from "node:fs/promises";
 import { resolve, extname, sep } from "node:path";
 const root = resolve("out");
@@ -21,6 +25,7 @@ const types = {
 http
   .createServer(async (req, res) => {
     try {
+      if (new URL(req.url, "http://localhost").pathname === "/api/contact") return await contact(req, res);
       if (!["GET", "HEAD"].includes(req.method)) {
         res.writeHead(405);
         res.end();

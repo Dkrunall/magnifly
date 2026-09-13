@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/lib/content";
 import { CTA, ProjectArt } from "@/components/shared";
+import CaseChapters from "@/components/case-chapters";
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
@@ -58,7 +59,8 @@ export default async function CaseStudy({
       <div className="case-hero">
         <ProjectArt project={p} />
       </div>
-      <section className="section paper">
+      <CaseChapters />
+      <section className="section paper case-chapter" id="case-overview">
         <div className="case-facts">
           <div>
             <span>Industry</span>
@@ -94,7 +96,7 @@ export default async function CaseStudy({
           </article>
         </div>
       </section>
-      <section className="section strategy">
+      <section className="section strategy case-chapter" id="case-strategy">
         <span className="eyebrow">04 / The strategy</span>
         <h2>{p.title}</h2>
         <p>{p.strategy}</p>
@@ -117,7 +119,7 @@ export default async function CaseStudy({
           <span className="eyebrow">Concept Work / Editorial application</span>
         </div>
       </section>
-      <section className="section paper case-narrative">
+      <section className="section paper case-narrative case-chapter" id="case-execution">
         <article>
           <span className="eyebrow">05 / Creative execution</span>
           <h3>One idea. Every touchpoint.</h3>
@@ -137,7 +139,7 @@ export default async function CaseStudy({
           </ul>
         </article>
       </section>
-      <section className="section social-execution">
+      <section className="section social-execution case-chapter" id="case-social">
         <span className="eyebrow">07 / Social execution — concept layouts</span>
         <h2>
           A story made
@@ -217,12 +219,14 @@ export default async function CaseStudy({
       </section>
       <Link
         href={`/case-studies/${next.slug}`}
-        className="next-project section"
+        className="next-project section next-project-preview"
       >
         <span className="eyebrow">Next concept / {next.industry}</span>
         <h2>
           {next.brand} <span>↗</span>
         </h2>
+        <div className="next-project-art" aria-hidden="true"><ProjectArt project={next} /></div>
+        <span className="next-project-description">{next.title}</span>
       </Link>
       <CTA />
     </main>

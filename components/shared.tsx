@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Project } from "@/lib/content";
 import ProjectHover from "./project-hover";
+import ProjectStart from "./project-start";
 export function CTA() {
   return (
     <section className="closing section">
@@ -13,13 +14,7 @@ export function CTA() {
           WHAT’S NEXT?
         </h2>
         <div className="closing-copy">
-          <p>
-            Tell us where you want to go. Let’s build the brand that gets you
-            there.
-          </p>
-          <Link className="button dark-button" href="/contact">
-            Start a project <span>↗</span>
-          </Link>
+          <ProjectStart />
         </div>
       </div>
     </section>
@@ -74,6 +69,13 @@ export function ProjectCard({
       <ProjectHover
         href={`/case-studies/${p.slug}`}
         label={`View ${p.brand} case study`}
+        preview={<div className="project-concept-sheet" style={{ background: p.color, color: p.ink }}>
+          <span className="eyebrow">{p.brand} / Creative direction</span>
+          <strong>{p.phrase}</strong>
+          <div className="concept-disc" aria-hidden="true">↗</div>
+          <span>{p.tags.join(" · ")}</span>
+          <span className="concept-open">Explore the concept ↗</span>
+        </div>}
       >
         <ProjectArt project={p} />
         <span className="image-arrow" aria-hidden="true">

@@ -10,6 +10,7 @@ import "./modern.css";
 import "./hero.css";
 import "lenis/dist/lenis.css";
 import "./interactions.css";
+import "./responsive.css";
 const display = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display",

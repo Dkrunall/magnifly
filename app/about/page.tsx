@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { CTA } from "@/components/shared";
 import { services } from "@/lib/content";
+import Link from "next/link";
+import StudioPageHero from "@/components/studio-page-hero";
+import ProcessJourney from "@/components/process-journey";
+import PageSections from "@/components/page-sections";
 export const metadata: Metadata = {
   title: "About the studio",
   description:
@@ -8,21 +12,10 @@ export const metadata: Metadata = {
 };
 export default function About() {
   return (
-    <main>
-      <section className="page-heading section">
-        <span className="eyebrow">The studio / Our point of view</span>
-        <h1>
-          Creative thinking.
-          <br />
-          <span className="outline">Clear purpose.</span>
-        </h1>
-        <p>
-          MAGNIFLY MEDIA connects brand strategy, visual identity, and social
-          storytelling. We make the thinking clear so the creative can go
-          further.
-        </p>
-      </section>
-      <section className="section paper about-statement">
+    <main className="studio-inner-page about-page">
+      <StudioPageHero number="01" label="THE STUDIO" first="CLEAR" second="PURPOSE" description="Strategy, identity, and social storytelling. Clear thinking gives our creative the space to take flight." target="#our-belief" action="Explore our approach" />
+      <PageSections links={[["Our belief", "#our-belief"], ["Working together", "#working-together"], ["Our process", "#our-process"]]} />
+      <section className="section paper about-statement" id="our-belief">
         <span className="eyebrow">What we believe</span>
         <h2>
           Attention is a moment.
@@ -42,7 +35,7 @@ export default function About() {
           </p>
         </div>
       </section>
-      <section className="section">
+      <section className="section" id="working-together">
         <div className="section-title">
           <span className="eyebrow">How we work together</span>
           <h2>
@@ -50,7 +43,7 @@ export default function About() {
             <br />a shared effort.
           </h2>
         </div>
-        <div className="principles">
+        <div className="principles studio-principles">
           {[
             [
               "Clarity before complexity",
@@ -69,17 +62,20 @@ export default function About() {
               "We create systems and guidance that help the work keep going beyond the launch.",
             ],
           ].map(([title, text], i) => (
-            <article key={title}>
-              <span className="eyebrow">0{i + 1}</span>
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
+            <details key={title} name="studio-principle" open={i === 0}>
+              <summary><span className="eyebrow">0{i + 1}</span><h3>{title}</h3><span className="principle-toggle" aria-hidden="true">+</span></summary>
+              <div className="principle-answer"><span className="eyebrow">IN PRACTICE</span><p>{text}</p></div>
+            </details>
           ))}
         </div>
         <div className="capabilities">
           <span className="eyebrow">Core capabilities</span>
-          <p>{services.map((s) => s.name).join(" / ")}</p>
+          <div className="studio-capability-links">{services.map((s, index) => <Link href={`/services#service-${index + 1}`} key={s.name}>{s.name}<span aria-hidden="true">↗</span></Link>)}</div>
         </div>
+      </section>
+      <section className="section paper process" id="our-process">
+        <div className="section-title"><span className="eyebrow">FROM FIRST THOUGHT TO FULL FLIGHT</span><h2>A clear way<br />forward.</h2></div>
+        <ProcessJourney />
       </section>
       <CTA />
     </main>

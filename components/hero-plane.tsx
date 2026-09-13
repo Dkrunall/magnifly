@@ -1,7 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
 import { Component, useEffect, useRef, useState, type ReactNode } from "react";
-import { Rotate3D } from "lucide-react";
 const Scene = dynamic(() => import("./plane-scene"), { ssr: false });
 class SceneBoundary extends Component<
   { children: ReactNode; onFailure: () => void },
@@ -21,8 +20,7 @@ class SceneBoundary extends Component<
 export default function HeroPlane() {
   const [enabled, setEnabled] = useState(false),
     [ready, setReady] = useState(false),
-    [active, setActive] = useState(true),
-    [spin, setSpin] = useState(0);
+    [active, setActive] = useState(true);
   const root = useRef<HTMLDivElement>(null),
     pointer = useRef({ x: 0, y: 0 }),
     reduced = useRef(true);
@@ -127,7 +125,7 @@ export default function HeroPlane() {
               <Scene
                 active={active}
                 pointer={pointer}
-                spin={spin}
+                spin={0}
                 onReady={() => setReady(true)}
                 onFailure={fail}
               />
@@ -138,15 +136,6 @@ export default function HeroPlane() {
       <span className="plane-index eyebrow" aria-hidden="true">
         MM—01 / THE NEXT DIRECTION
       </span>
-      {enabled ? (
-        <button className="plane-play" onClick={() => setSpin((s) => s + 1)}>
-          <Rotate3D size={18} />
-          <span>Give it a spin</span>
-          <span className="play-dot" aria-hidden="true" />
-        </button>
-      ) : (
-        <span className="plane-play static-caption">Ideas take flight ↗</span>
-      )}
     </div>
   );
 }

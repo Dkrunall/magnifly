@@ -3,27 +3,33 @@ import { useState } from "react";
 import Link from "next/link";
 import { services, projects } from "@/lib/content";
 import { ProjectArt } from "./shared";
+import DevelopmentArt from "./development-art";
 export default function ServicesPreview() {
   const [active, setActive] = useState(0);
   return (
     <div className="services-preview">
-      <div className="service-aside" aria-live="polite">
+      <div className="service-aside" id="service-preview-panel" aria-live="polite">
         <div className="service-preview-art" key={active}>
-          <ProjectArt project={projects[active]} />
+          {projects[active] ? <ProjectArt project={projects[active]} /> : <DevelopmentArt app={active === 7} />}
+          <div className="service-art-caption"><span>0{active + 1} / IN FOCUS</span><strong>{services[active].name}</strong></div>
         </div>
         <span className="eyebrow">A clear point of view</span>
         <h3>{services[active].short}</h3>
         <p>{services[active].approach}</p>
+        <ul className="service-deliverable-chips">{services[active].deliverables.slice(0, 3).map(item => <li key={item}>{item}</li>)}</ul>
         <Link className="text-link" href={`/services#service-${active + 1}`}>
           Explore the service ↗
         </Link>
       </div>
       <div className="service-list">
         {services.map((s, i) => (
-          <Link
+          <button
+            type="button"
             onMouseEnter={() => setActive(i)}
             onFocus={() => setActive(i)}
-            href={`/services#service-${i + 1}`}
+            onClick={() => setActive(i)}
+            aria-pressed={active === i}
+            aria-controls="service-preview-panel"
             key={s.name}
             className={active === i ? "active" : ""}
           >
@@ -33,7 +39,7 @@ export default function ServicesPreview() {
               <p className="mobile-description">{s.short}</p>
             </div>
             <span aria-hidden="true">↗</span>
-          </Link>
+          </button>
         ))}
       </div>
     </div>
