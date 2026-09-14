@@ -1,7 +1,6 @@
 
 import UiIcon from "@/components/ui-icon";
 import type { Metadata } from "next";
-import { CTA } from "@/components/shared";
 import { services } from "@/lib/content";
 import Link from "next/link";
 import StudioPageHero from "@/components/studio-page-hero";
@@ -79,7 +78,6 @@ export default function About() {
         <div className="section-title"><span className="eyebrow">FROM FIRST THOUGHT TO FULL FLIGHT</span><h2>A clear way<br />forward.</h2></div>
         <ProcessJourney />
       </section>
-      <CTA />
     </main>
   );
 }

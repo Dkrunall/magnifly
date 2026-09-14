@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/lib/content";
-import { CTA, ProjectArt } from "@/components/shared";
+import { ProjectArt } from "@/components/shared";
 import CaseChapters from "@/components/case-chapters";
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -230,7 +230,6 @@ export default async function CaseStudy({
         <div className="next-project-art" aria-hidden="true"><ProjectArt project={next} /></div>
         <span className="next-project-description">{next.title}</span>
       </Link>
-      <CTA />
     </main>
   );
 }

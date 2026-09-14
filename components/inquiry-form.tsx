@@ -5,11 +5,12 @@ import { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { inquirySchema, type Inquiry } from "@/lib/inquiry";
-import { services } from "@/lib/content";
+import { services, serviceGroups } from "@/lib/content";
 export default function InquiryForm() {
   const [complete, setComplete] = useState(false);
   const [deliveryError, setDeliveryError] = useState("");
   const status = useRef<HTMLDivElement>(null);
+  const failure = useRef<HTMLParagraphElement>(null);
   const {
     register,
     handleSubmit,
@@ -36,6 +37,7 @@ export default function InquiryForm() {
   useEffect(() => {
     if (complete) status.current?.focus();
   }, [complete]);
+  useEffect(() => { if (deliveryError) failure.current?.focus(); }, [deliveryError]);
   async function submit(data: Inquiry) {
     setComplete(false);
     setDeliveryError("");
@@ -49,7 +51,7 @@ export default function InquiryForm() {
     } catch (error) { setDeliveryError(error instanceof Error && error.name !== "TimeoutError" ? error.message : "Delivery could not be confirmed. Please wait before retrying."); }
   }
   return (
-    <form noValidate onSubmit={handleSubmit(submit)} className="inquiry-form">
+    <form noValidate onSubmit={handleSubmit(submit)} className="inquiry-form" aria-busy={isSubmitting}>
       <div className="demo-note">
         <span className="eyebrow">Your project brief</span>
         <p>
@@ -77,6 +79,7 @@ export default function InquiryForm() {
               id={key}
               type={type}
               autoComplete={autoComplete}
+              required={key !== "website"}
               {...register(key)}
               aria-invalid={!!errors[key]}
               aria-describedby={errors[key] ? `${key}-error` : undefined}
@@ -90,13 +93,14 @@ export default function InquiryForm() {
         aria-describedby={errors.services ? "services-error" : undefined}
       >
         <legend className="brief-step-title"><span>02 /</span> What can we help with?</legend>
-        <div className="service-options">
-          {services.map((s) => (
+        <div className="inquiry-service-groups">
+          {serviceGroups.map((group,index) => <div role="group" aria-labelledby={`inquiry-group-${index}`} key={group.name}><h4 id={`inquiry-group-${index}`}>{group.name}</h4><div className="service-options">
+          {services.slice(group.start, group.end).map((s) => (
             <label key={s.name}>
               <input type="checkbox" value={s.name} {...register("services")} />
               <span>{s.name}</span>
             </label>
-          ))}
+          ))}</div></div>)}
         </div>
         {error("services")}
       </fieldset>
@@ -106,6 +110,7 @@ export default function InquiryForm() {
           <label htmlFor="budget">Budget range (INR)</label>
           <select
             id="budget"
+            required
             {...register("budget")}
             aria-invalid={!!errors.budget}
             aria-describedby={errors.budget ? "budget-error" : undefined}
@@ -127,6 +132,7 @@ export default function InquiryForm() {
           <label htmlFor="timeline">Desired timeline</label>
           <select
             id="timeline"
+            required
             {...register("timeline")}
             aria-invalid={!!errors.timeline}
             aria-describedby={errors.timeline ? "timeline-error" : undefined}
@@ -148,6 +154,7 @@ export default function InquiryForm() {
         <label htmlFor="description">Tell us about your project</label>
         <textarea
           id="description"
+          required
           rows={5}
           {...register("description")}
           aria-invalid={!!errors.description}
@@ -165,7 +172,7 @@ export default function InquiryForm() {
         {isSubmitting ? "Sending your inquiry…" : "Send inquiry"}{" "}
         <span><UiIcon name="arrow" /></span>
       </button>
-      {deliveryError && <p role="alert" className="field-error">{deliveryError}</p>}
+      {deliveryError && <p ref={failure} tabIndex={-1} role="alert" className="field-error">{deliveryError}</p>}
       <div
         ref={status}
         tabIndex={-1}

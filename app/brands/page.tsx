@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Portfolio from "@/components/portfolio";
-import { CTA } from "@/components/shared";
 import StudioPageHero from "@/components/studio-page-hero";
 import BrandPlayground from "@/components/brand-playground";
 import ReelShowcase from "@/components/reel-showcase";
@@ -27,7 +26,6 @@ export default function Brands() {
       </section>
       <BrandPlayground />
       <ReelShowcase />
-      <CTA />
     </main>
   );
 }

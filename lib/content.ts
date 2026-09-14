@@ -85,6 +85,11 @@ export const services = [
   { name: "Web Development", short: "A website that works as well as it looks.", problem: "A confusing or slow website turns interest into missed opportunities.", approach: "We plan clear user journeys, design responsive interfaces, and build around the actions your visitors need to take. Integrations and maintenance are agreed before development begins.", deliverables: ["Site structure and interactive prototypes", "Responsive website development", "CMS and agreed integrations", "Accessibility, performance testing, and launch handover"] },
   { name: "App Development", short: "Turn a useful idea into an everyday experience.", problem: "Too many features can hide the one thing your users came to do.", approach: "We define the core journey, test a prototype, and build an agreed first release. Together we choose the right platform and release plan for your audience.", deliverables: ["Product discovery and MVP scope", "UX flows and UI prototypes", "Web or mobile app development to an agreed scope", "Integration testing, release support, and documentation"] },
 ];
+export const serviceGroups = [
+  { name: "Brand", start: 0, end: 2, description: "Find your position and build an identity people remember." },
+  { name: "Social", start: 2, end: 6, description: "Create content, grow your presence, and reach the right people." },
+  { name: "Web / App", start: 6, end: 8, description: "Build digital experiences that turn interest into action." },
+];
 export type Project = {
   slug: string;
   brand: string;

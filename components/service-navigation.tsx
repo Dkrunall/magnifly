@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { services } from "@/lib/content";
+import { serviceGroups } from "@/lib/content";
 
 export default function ServiceNavigation() {
   const [active, setActive] = useState(0);
@@ -13,6 +13,6 @@ export default function ServiceNavigation() {
     return () => observer.disconnect();
   }, []);
   return <nav className="service-route-nav" aria-label="Explore services">
-    {services.map((service, index) => <a key={service.name} href={`#service-${index + 1}`} aria-current={active === index ? "location" : undefined} onClick={() => setActive(index)}><span>0{index + 1}</span>{service.name}</a>)}
+    {serviceGroups.map((group, index) => <a key={group.name} href={`#service-${group.start + 1}`} aria-current={active >= group.start && active < group.end ? "location" : undefined} onClick={() => setActive(group.start)}><span>0{index + 1}</span>{group.name}</a>)}
   </nav>;
 }

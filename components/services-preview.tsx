@@ -3,7 +3,7 @@ import UiIcon from "@/components/ui-icon";
 
 import { useState } from "react";
 import Link from "next/link";
-import { services, projects } from "@/lib/content";
+import { services, projects, serviceGroups } from "@/lib/content";
 import { ProjectArt } from "./shared";
 import DevelopmentArt from "./development-art";
 export default function ServicesPreview() {
@@ -24,7 +24,9 @@ export default function ServicesPreview() {
         </Link>
       </div>
       <div className="service-list">
-        {services.map((s, i) => (
+        {serviceGroups.map(group => <div className="service-preview-group" key={group.name}>
+          <h3 className="service-group-title">{group.name}</h3><p className="service-group-description">{group.description}</p>
+        {services.slice(group.start, group.end).map((s, offset) => { const i = group.start + offset; return (
           <button
             type="button"
             onMouseEnter={() => setActive(i)}
@@ -42,7 +44,7 @@ export default function ServicesPreview() {
             </div>
             <span aria-hidden="true"><UiIcon name="arrow" /></span>
           </button>
-        ))}
+        ); })}</div>)}
       </div>
     </div>
   );

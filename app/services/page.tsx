@@ -1,9 +1,10 @@
 
 import UiIcon from "@/components/ui-icon";
+import { Fingerprint, Megaphone, PanelsTopLeft } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { services, projects } from "@/lib/content";
-import { CTA, ProjectArt } from "@/components/shared";
+import { services, projects, serviceGroups } from "@/lib/content";
+import { ProjectArt } from "@/components/shared";
 import ServiceNavigation from "@/components/service-navigation";
 import StudioPageHero from "@/components/studio-page-hero";
 import RedesignPreview from "@/components/redesign-preview";
@@ -42,6 +43,18 @@ export default function Services() {
     <main className="studio-inner-page services-page">
       <StudioPageHero number="03" label="OUR CAPABILITIES" first="IDEAS INTO" second="IMPACT" description="Brand, social, web, and app experiences. Eight connected disciplines, shaped around your next move." target="#service-1" action="Explore our services" />
       <PageSections links={[["Capabilities", "#service-1"], ["Try our approach", "#service-demos"], ["Ways to work together", "#engagements"], ["FAQs", "#questions"]]} />
+      <section className="section service-group-overview" aria-label="Find your service">
+        <div className="service-overview-intro"><span className="eyebrow">Find your starting point</span><h2>Three ways forward.<br />One connected studio.</h2><p>Start with what your business needs today. We’ll connect the right disciplines around it.</p></div>
+        {serviceGroups.map((group, index) => {
+          const Icon = [Fingerprint, Megaphone, PanelsTopLeft][index];
+          return <Link className="service-category-card" key={group.name} href={`#service-${group.start + 1}`}>
+            <div className="service-category-top"><Icon aria-hidden="true" strokeWidth={1.25} /><span>0{index + 1} / {group.end - group.start} disciplines</span></div>
+            <h2>{group.name}</h2><p>{group.description}</p>
+            <div className="service-category-disciplines">{services.slice(group.start, group.end).map(service => <span key={service.name}>{service.name}</span>)}</div>
+            <span className="service-category-action">Explore {group.name.toLowerCase()} <UiIcon name="arrow" /></span>
+          </Link>;
+        })}
+      </section>
       <div className="service-details">
         <ServiceNavigation />
         {services.map((s, i) => (
@@ -50,12 +63,12 @@ export default function Services() {
             id={`service-${i + 1}`}
             key={s.name}
           >
-            <div>
+            <div className="service-detail-copy">
               <span className="eyebrow">
                 0{i + 1} / {s.name}
               </span>
               <h2>{s.short}</h2>
-              <p>{s.problem}</p>
+              <p className="service-detail-lead">{s.problem}</p>
               <p>{s.approach}</p>
               <h3 className="deliverable-title">What we can deliver</h3>
               <ul>
@@ -128,7 +141,6 @@ export default function Services() {
           </details>
         ))}
       </section>
-      <CTA />
     </main>
   );
 }

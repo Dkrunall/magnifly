@@ -3,7 +3,7 @@ import UiIcon from "@/components/ui-icon";
 import Link from "next/link";
 import Hero from "@/components/hero";
 import ServicesPreview from "@/components/services-preview";
-import { CTA, ProjectCard } from "@/components/shared";
+import { ProjectCard } from "@/components/shared";
 import { projects } from "@/lib/content";
 export default function Home() {
   return (
@@ -90,7 +90,6 @@ export default function Home() {
         <p className="home-process-copy">Discover the opportunity. Define the direction. Create the work. Amplify the idea. A clear process, with room for your input at every stage.</p>
         <Link className="text-link" href="/about#our-process">Explore how we work <UiIcon name="arrow" /></Link>
       </section>
-      <CTA />
     </main>
   );
 }

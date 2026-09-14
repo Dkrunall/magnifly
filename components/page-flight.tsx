@@ -20,13 +20,14 @@ export default function PageFlight() {
       const footer = document.querySelector<HTMLElement>(".footer");
       if (!stage || !heroPlane || !craft || !svg || !route || !footer) return;
       let startY = 0, endY = 0, length = 0, width = 0, stageWidth = 0, stageHeight = 0;
+      let maxScroll = 1;
       let destinations: { top: number; bottom: number; name: string }[] = [];
       const labels = craft.querySelector<SVGGElement>(".flight-wing-labels");
       const sectionLabel = craft.querySelector<SVGTextElement>(".flight-section-label");
       const draw = () => {
         // Lenis already smooths scrolling; use one clock for path and viewport.
         const scroll = window.scrollY;
-        const progress = Math.min(1, Math.max(0, scroll / Math.max(1, ScrollTrigger.maxScroll(window))));
+        const progress = Math.min(1, Math.max(0, scroll / maxScroll));
         const targetY = startY + (endY - startY) * progress;
         // Monotonic vertical curves keep the plane in view even on very long pages.
         let low = 0, high = length;
@@ -80,6 +81,7 @@ export default function PageFlight() {
         craft.style.height = `${stageHeight}px`;
         svg.setAttribute("viewBox", `0 0 ${width} ${totalHeight}`);
         svg.style.height = `${totalHeight}px`;
+        maxScroll = Math.max(1, totalHeight - window.innerHeight);
         const points = [{ x: a.left + a.width / 2, y: startY }];
         // Keep the route itself inside the viewport, rather than moving the
         // plane away from it when a label appears.

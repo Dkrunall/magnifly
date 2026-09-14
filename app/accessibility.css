@@ -1,0 +1,9 @@
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.skip-link { z-index: 1001; }
+.service-options input:focus-visible + span { outline: 2px solid #17281d; outline-offset: 4px; }
+.field :is(input,select,textarea) { scroll-margin-top: 130px; }
+.field-error:focus { outline: 2px solid currentColor; outline-offset: 6px; }
+@media(prefers-reduced-motion:reduce) {
+  .project-image-link img,.project-image-link .project-art img { transform: none !important; scale: 1 !important; }
+  .header .menu-trigger:hover .menu-symbol path { transform: none; }
+}

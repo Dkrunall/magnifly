@@ -56,6 +56,7 @@ html { scroll-padding-top: calc(var(--header-clearance) + 12px); }
 .header .modern-menu { padding: max(28px,env(safe-area-inset-top)) max(5%,env(safe-area-inset-right)) max(28px,env(safe-area-inset-bottom)) max(5%,env(safe-area-inset-left)); }
 .modern-menu .menu-top,.menu-editorial-grid,.modern-menu .menu-project { flex-shrink: 0; }
 .modern-menu .menu-top { margin-bottom: 28px; }
+.modern-menu .menu-close { display: inline-flex; flex-shrink: 0; }
 .menu-editorial-grid { width: 100%; max-width: 1440px; align-self: center; gap: clamp(32px,6vw,100px); }
 .header .modern-menu nav a { grid-template-columns: 28px minmax(0,1fr) 32px; gap: 18px; font-size: clamp(38px,5vw,76px); }
 .header .modern-menu nav a > span:nth-child(2) { transition: transform .25s; }

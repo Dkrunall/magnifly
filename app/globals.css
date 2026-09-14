@@ -78,7 +78,7 @@ p {
   margin: 70px 0;
 }
 .header .mobile-menu nav a {
-  display: block !important;
+  display: block;
   font-family: var(--font-display);
   font-size: 44px;
 }
