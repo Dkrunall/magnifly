@@ -38,12 +38,12 @@ export default function Hero() {
       <div className="flight-world">
         <div className="flight-grid" aria-hidden="true" />
         <svg className="flight-route" viewBox="0 0 1400 640" preserveAspectRatio="none" aria-hidden="true"><path d="M-80 560C180 610 270 20 660 120S1000 690 1490 90" /></svg>
-        <h1 className="flight-title"><span>THINK</span>{" "}<span>BIGGER<span className="flight-period">.</span></span></h1>
+        <h1 className="flight-title magnifly-brand-title"><span>WE MAGNIFLY</span>{" "}<span>BRANDS<span className="flight-period">.</span></span></h1>
         <HeroPlane />
       </div>
       <div className="flight-bottomline">
         <a href="#studio" className="flight-scroll" aria-label="Explore the studio"><ArrowDown size={21} /></a>
-        <p>We give ambitious brands<br /><strong>the space to take flight.</strong></p>
+        <p>Creativity, strategy, and performance<br /><strong>to help ambitious brands rise.</strong></p>
         <div className="flight-cta"><Link href="/brands">Explore our work <ArrowUpRight size={22} /></Link><Link href="/contact">Start something big <ArrowUpRight size={17} /></Link></div>
       </div>
     </section>

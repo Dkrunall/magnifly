@@ -14,7 +14,7 @@ export const services = [
     ],
   },
   {
-    name: "Visual Identity",
+    name: "Branding & Design",
     short: "Make recognition second nature.",
     problem:
       "An inconsistent identity makes even a great offer easy to overlook.",
@@ -23,7 +23,8 @@ export const services = [
     deliverables: [
       "Logo and identity system",
       "Typography and color direction",
-      "Art direction",
+      "Art direction and moodboards",
+      "Campaign and social design",
       "Brand guidelines and templates",
     ],
   },
@@ -42,7 +43,7 @@ export const services = [
     ],
   },
   {
-    name: "Content Production",
+    name: "Production & Photography",
     short: "Turn a good idea into a feeling.",
     problem:
       "Generic content disappears in the feed. Strong production makes your point unmistakable.",
@@ -50,7 +51,8 @@ export const services = [
       "From a single shoot to a complete campaign, we develop the concept, plan the production, and shape assets for each channel.",
     deliverables: [
       "Creative concepts and storyboards",
-      "Photography and campaign production",
+      "Product, lifestyle, and campaign photography",
+      "Brand films and shoot direction",
       "Short-form video and editing",
       "Platform-specific asset libraries",
     ],
@@ -69,14 +71,14 @@ export const services = [
     ],
   },
   {
-    name: "Paid Social",
+    name: "Performance Marketing",
     short: "Give your strongest ideas more room.",
     problem:
       "Media spend cannot fix an unclear message. Creative and targeting need to work together.",
     approach:
       "We build focused testing plans, adapt creative around audience signals, and report against the outcomes that matter to you.",
     deliverables: [
-      "Campaign planning and audience mapping",
+      "Paid social planning and audience mapping",
       "Ad creative and copy variants",
       "Testing and optimization",
       "Measurement and reporting",
@@ -274,7 +276,7 @@ export const stages = [
     output: "A shared brief and opportunity map.",
   },
   {
-    name: "Define",
+    name: "Strategize",
     text: "We choose the position, message, and creative direction that will guide the work.",
     output: "A strategy and a clear creative brief.",
   },
@@ -284,8 +286,13 @@ export const stages = [
     output: "Finished assets and tools your team can use.",
   },
   {
-    name: "Amplify",
-    text: "We launch with intention, learn from audience signals, and refine what comes next.",
-    output: "A rollout plan and a measurement framework.",
+    name: "Launch",
+    text: "We bring the work to the right channels, with a clear message, audience, and rollout plan.",
+    output: "A coordinated launch and a measurement framework.",
+  },
+  {
+    name: "Scale",
+    text: "We review what people respond to, test improvements, and use those findings to shape the next cycle.",
+    output: "Performance insights and a prioritized plan for improvement.",
   },
 ];

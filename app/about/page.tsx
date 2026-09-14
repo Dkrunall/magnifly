@@ -6,6 +6,7 @@ import Link from "next/link";
 import StudioPageHero from "@/components/studio-page-hero";
 import ProcessJourney from "@/components/process-journey";
 import PageSections from "@/components/page-sections";
+import { BrandManifesto } from "@/components/brand-story";
 export const metadata: Metadata = {
   title: "About the studio",
   description:
@@ -35,6 +36,7 @@ export default function About() {
             part of the same idea.
           </p>
         </div>
+        <div className="brand-purpose-grid"><article><span className="eyebrow">Our purpose</span><h3>Help ambitious brands rise above the ordinary.</h3></article><article><span className="eyebrow">Our promise</span><h3>Turn potential into presence.</h3><p>We bring confidence, clarity, and momentum to the work, helping your brand show up with a stronger sense of who it is.</p></article></div>
       </section>
       <section className="section" id="working-together">
         <div className="section-title">
@@ -47,20 +49,20 @@ export default function About() {
         <div className="principles studio-principles">
           {[
             [
-              "Clarity before complexity",
-              "We agree on the problem, audience, and desired outcome before exploring solutions.",
+              "One team. Every step.",
+              "The same team thinks, creates, and scales. We stay with your brand from the first brief through the next stage of growth.",
             ],
             [
-              "Honest collaboration",
-              "We make space for questions, explain our decisions, and use focused feedback to move the work forward.",
+              "Strategy that reaches production.",
+              "Ideas don’t change hands and lose direction. From brief to shoot, the people shaping the concept help bring it to life on set.",
             ],
             [
-              "One connected idea",
-              "Strategy, design, production, and distribution inform each other from the start.",
+              "No silos. No agency juggling.",
+              "Creative, media, and performance work as one. Shared direction keeps the message consistent across every channel.",
             ],
             [
-              "A useful handover",
-              "We create systems and guidance that help the work keep going beyond the launch.",
+              "Built under one roof.",
+              "One partner connects the disciplines your project needs, with clear responsibilities and useful systems that support your team beyond launch.",
             ],
           ].map(([title, text], i) => (
             <details key={title} name="studio-principle" open={i === 0}>
@@ -78,6 +80,8 @@ export default function About() {
         <div className="section-title"><span className="eyebrow">FROM FIRST THOUGHT TO FULL FLIGHT</span><h2>A clear way<br />forward.</h2></div>
         <ProcessJourney />
       </section>
+      <section className="section brand-partnership"><span className="eyebrow">GOOD COMPANIES KEEP GOOD COMPANY</span><h2>For brands that<br />trust the process.</h2><p>Growing together, one campaign at a time. We work best with ambitious teams who value shared thinking, honest feedback, and steady improvement.</p><Link className="text-link" href="/contact">Build with us <UiIcon name="arrow" /></Link></section>
+      <BrandManifesto />
     </main>
   );
 }

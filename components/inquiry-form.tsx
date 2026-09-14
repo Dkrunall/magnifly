@@ -23,7 +23,9 @@ export default function InquiryForm() {
   });
   const selectedServices = watch("services") || [];
   useEffect(() => {
-    const chosen = new URLSearchParams(window.location.search).get("service");
+    const requested = new URLSearchParams(window.location.search).get("service");
+    const aliases: Record<string, string> = { "Paid Social": "Performance Marketing", "Visual Identity": "Branding & Design", "Content Production": "Production & Photography" };
+    const chosen = requested ? aliases[requested] || requested : null;
     if (chosen && services.some(service => service.name === chosen)) {
       setValue("services", [chosen]);
     }

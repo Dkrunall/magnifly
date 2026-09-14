@@ -37,7 +37,7 @@ export default function ProcessJourney() {
   return <div className="process-journey" ref={root}>
     <aside className="journey-map">
       <span className="eyebrow">THE FLIGHT PLAN</span>
-      <div className="journey-counter" aria-hidden="true">0{active + 1}<span> / 04</span></div>
+      <div className="journey-counter" aria-hidden="true">0{active + 1}<span> / {String(stages.length).padStart(2, "0")}</span></div>
       <div className="journey-progress" aria-hidden="true"><span style={{ transform: `scaleX(${(active + 1) / stages.length})` }} /></div>
       <nav aria-label="Process stages">
         {stages.map((stage, index) => <a key={stage.name} href={`#process-step-${index}`} aria-current={active === index ? "step" : undefined} onClick={() => setActive(index)}><span>0{index + 1}</span>{stage.name}<span aria-hidden="true"><UiIcon name="arrow" /></span></a>)}

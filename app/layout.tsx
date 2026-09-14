@@ -34,9 +34,9 @@ export const metadata: Metadata = {
     "https://magnifly-media-studio.magniflydesign.chatgpt.site",
   ),
   openGraph: {
-    title: "MAGNIFLY MEDIA — Big ideas. Bigger impact.",
+    title: "MAGNIFLY MEDIA — We Magnifly Brands",
     description:
-      "Brand strategy, social content, and campaigns that help ambitious businesses take flight.",
+      "Brand strategy, design, social media, production, performance marketing, and web and app development. One creative team to help ambitious brands rise.",
     images: [
       {
         url: "/og.png",
@@ -48,15 +48,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MAGNIFLY MEDIA — Big ideas. Bigger impact.",
+    title: "MAGNIFLY MEDIA — We Magnifly Brands",
     images: ["/og.png"],
   },
   title: {
-    default: "MAGNIFLY MEDIA — Ideas take flight",
+    default: "MAGNIFLY MEDIA | Branding, Digital Marketing & Web Development",
     template: "%s | MAGNIFLY MEDIA",
   },
   description:
-    "Brand strategy, social content, and campaigns that help ambitious businesses take flight.",
+    "MAGNIFLY MEDIA connects brand strategy, design, social media, production, performance marketing, and web and app development to help ambitious brands rise.",
 };
 export default function RootLayout({
   children,

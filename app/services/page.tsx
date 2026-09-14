@@ -12,9 +12,9 @@ import CampaignBuilder from "@/components/campaign-builder";
 import PageSections from "@/components/page-sections";
 import DevelopmentArt from "@/components/development-art";
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Branding, Marketing & Web Development Services",
   description:
-    "Brand strategy, visual identity, social media, content production, influencer campaigns, and paid social.",
+    "Explore brand strategy, branding and design, social media management, photography and production, influencer campaigns, performance marketing, and web and app development.",
 };
 const faqs = [
   [

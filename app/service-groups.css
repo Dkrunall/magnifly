@@ -1,4 +1,23 @@
 .service-preview-group { margin-bottom: 36px; }
+.brand-service-intro { max-width:760px; margin-top:64px; }
+.brand-service-intro h3,.brand-outcomes h3,.brand-purpose-grid h3 { font:500 clamp(24px,3vw,38px)/1.2 var(--font-display); letter-spacing:-.035em; }
+.brand-service-intro p,.brand-outcomes p,.brand-purpose-grid p,.brand-partnership p { font-size:16px; line-height:1.8; max-width:60ch; }
+.brand-service-cloud { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+.brand-service-cloud a { display:inline-flex; gap:12px; align-items:center; padding:14px 18px; border:1px solid #ffffff35; border-radius:40px; transition:background .2s,color .2s; }
+.brand-service-cloud a:hover { background:#d6ff3f; color:#111; }
+.brand-idea-lines { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px 32px; margin-top:48px; }
+.intro .brand-idea-lines p { font-size:15px; line-height:1.6; margin:0; padding-top:20px; border-top:1px solid #ffffff30; }
+.brand-idea-lines strong { display:block; color:#d6ff3f; font-weight:500; }
+.brand-outcomes { display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,6vw,90px); margin-top:60px; padding-top:40px; border-top:1px solid #17281d40; }
+.brand-outcomes ul { list-style:none; padding:0; margin:0; }
+.brand-outcomes li { display:grid; grid-template-columns:1fr 24px 1.3fr; align-items:center; gap:12px; padding:16px 0; border-bottom:1px solid #17281d30; font-size:clamp(14px,1.6vw,21px); }
+.brand-purpose-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:48px; padding-top:40px; border-top:1px solid #17281d30; }
+.brand-manifesto { border-top:1px solid #ffffff25; }
+.brand-manifesto h2,.brand-partnership h2 { font:500 clamp(32px,5.5vw,76px)/1.08 var(--font-display); letter-spacing:-.045em; margin-block:24px; }
+.brand-manifesto p { font-size:clamp(16px,2vw,24px); line-height:1.8; max-width:60ch; }
+.brand-manifesto .manifesto-signoff { color:#d6ff3f; font-size:14px; margin-top:32px; }
+@media(max-width:700px) { .brand-idea-lines,.brand-purpose-grid,.brand-outcomes { grid-template-columns:1fr; }.brand-service-cloud { gap:8px; }.brand-service-cloud a { padding:12px; gap:8px; font-size:13px; }.brand-purpose-grid { gap:24px; } }
+@media(prefers-reduced-motion:reduce) { .brand-service-cloud a { transition:none; } }
 .service-list .service-group-title { font: 500 26px var(--font-display); color: #d6ff3f; margin: 0 0 10px; }
 .service-group-description { font-size: 14px; line-height: 1.6; color: #bec6b2; margin: 0 0 20px; }
 .service-preview-group > button { width: 100%; display: grid; grid-template-columns: 38px minmax(0,1fr) 24px; gap: 20px; align-items: center; text-align: left; padding: 26px 16px; border: 0; border-top: 1px solid #8885; background: transparent; color: inherit; font: inherit; cursor: pointer; transition: background .25s,color .25s; }
